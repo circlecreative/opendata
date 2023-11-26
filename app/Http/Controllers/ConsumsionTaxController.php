@@ -10,6 +10,7 @@ use Throwable;
 class ConsumsionTaxController extends Controller
 {
     //
+    //test
     public function index()
     {
         $consumsion = ConsumsionTax::all();
