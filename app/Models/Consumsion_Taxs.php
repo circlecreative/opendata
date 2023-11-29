@@ -5,15 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ConsumsionTax extends Model
+class Consumsion_Taxs extends Model
 {
     use HasFactory;
-    protected $guarded= ['id'];
+    protected $guarded = ['id'];
 
-
-    protected $table = 'ConsumsionTax';
+    protected $table = 'Consumsion_Taxs';
 
     public $timestamps = false;
-    
 }
-
