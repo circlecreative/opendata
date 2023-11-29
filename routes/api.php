@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ConsumsionTaxController;
+use App\Http\Controllers\Consumsion_TaxsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/ConsumsionTax', [ConsumsionTaxController::class, 'index']);
-Route::get('/ConsumsionTax/{id}', [ConsumsionTaxController::class, 'show']);
-Route::post('/ConsumsionTax', [ConsumsionTaxController::class, 'store']);
-Route::put('/ConsumsionTax/{id}', [ConsumsionTaxController::class, 'update']);
-Route::delete('/ConsumsionTax/{id}', [ConsumsionTaxController::class, 'destroy']);
+Route::get('/Consumsion_Taxs', [Consumsion_TaxsController::class, 'index']);
+Route::get('/Consumsion_Taxs/{id}', [Consumsion_TaxsController::class, 'show']);
+Route::post('/Consumsion_Taxs', [Consumsion_TaxsController::class, 'store']);
+Route::put('/Consumsion_Taxs/{id}', [Consumsion_TaxsController::class, 'update']);
+Route::delete('/Consumsion_Taxs/{id}', [Consumsion_TaxsController::class, 'destroy']);
 
