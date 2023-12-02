@@ -5,6 +5,7 @@ use App\Models\Consumsion_Taxs;
 use App\Http\Resources\Consumsion_TaxsResource;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 use Throwable;
 
 class Consumsion_TaxsController extends Controller
@@ -34,14 +35,7 @@ class Consumsion_TaxsController extends Controller
                 return response()->json(['message' => $errorMessage], 422);
             }
 
-            $payload = $request->only ([
-                'code_province',
-                'province_name',
-                'regency_name_city',
-                'number_score_pph',
-                'unit',
-                'year',
-            ]);
+            $payload = $request->only(['code_province', 'province_name', 'code_regency_city', 'regency_name_city', 'number_score_pph', 'unit', 'year']);
 
             $DBCreate = Consumsion_Taxs::create($payload);
             return response()->json(
@@ -60,8 +54,14 @@ class Consumsion_TaxsController extends Controller
 
     public function destroy(string $id)
     {
-        $consumsion = Consumsion_Taxs::where('id', $id)->delete();
-        return response()->json(['message' => 'Data berhasil dihapus!'], 201);
+        $consumsion = Consumsion_Taxs::find($id);
+
+        if (!$consumsion) {
+            return response()->json(['message' => 'Data tidak ditemukan!'], 404);
+        }
+
+        $consumsion->delete();
+        return response()->json(['message' => 'Data berhasil dihapus!'], 200);
     }
 
     public function create()
@@ -74,7 +74,7 @@ class Consumsion_TaxsController extends Controller
         $consumsion = Consumsion_Taxs::find($id);
 
         if (!$consumsion) {
-            return response()->json(['message' => 'Data tidak ditemukan', 'status' => false, 'data' =>[]],200 );
+            return response()->json(['message' => 'Data tidak ditemukan', 'status' => false, 'data' => []], 200);
         }
         return response()->json(
             [
@@ -87,9 +87,15 @@ class Consumsion_TaxsController extends Controller
         );
     }
 
-    public function edit($id)
+    public function update(Request $request, $id)
     {
         $consumsion = Consumsion_Taxs::find($id);
-        return view('Consumsion_Taxs.edit', compact('Consumsion_Taxs'));
+        if (!$consumsion) {
+            return response()->json(['message' => 'Data tidak ditemukan']);
+        }
+        $consumsion->fill($request->all());//update date dengan nilai dari request
+        $consumsion->save();
+
+        return response()->json(['message' => 'Data berhasil diupdate', 'data' => $consumsion]);
     }
 }
