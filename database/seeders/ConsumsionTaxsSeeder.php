@@ -17,7 +17,7 @@ class ConsumsionTaxsSeeder extends Seeder
         //
         ConsumsionTaxs::truncate();
 
-        $csvData = fopen(base_path('database/csv/consumsion_taxs.csv'), 'r');
+        $csvData = fopen(base_path('database/csv/consumsiontaxs.csv'), 'r');
 
         if($csvData !== false){
             while(($data = fgetcsv($csvData)) !== false){
