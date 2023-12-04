@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Consumsion_Taxs;
+use \App\Models\ConsumsionTaxs;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class Consumsion_TaxsSeeder extends Seeder
+class ConsumsionTaxsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +15,7 @@ class Consumsion_TaxsSeeder extends Seeder
     public function run(): void
     {
         //
-        Consumsion_Taxs::truncate();
+        ConsumsionTaxs::truncate();
 
         $csvData = fopen(base_path('database/csv/consumsion_taxs.csv'), 'r');
 
@@ -32,7 +33,7 @@ class Consumsion_TaxsSeeder extends Seeder
                     'year'=> $data[7],
 
                 ];
-                Consumsion_Taxs::create($rowData);//simpan data kedalam model
+                ConsumsionTaxs::create($rowData);//simpan data kedalam model
             }
             fclose($csvData); //tutup file csv
         }

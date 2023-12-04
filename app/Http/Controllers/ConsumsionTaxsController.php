@@ -1,20 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Consumsion_Taxs;
-use App\Http\Resources\Consumsion_TaxsResource;
+use App\Models\ConsumsionTaxs;
+use App\Http\Resources\ConsumsionTaxsResource;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Throwable;
 
-class Consumsion_TaxsController extends Controller
+class ConsumsionTaxsController extends Controller
 {
     //
     public function index()
     {
-        $consumsion = Consumsion_Taxs::paginate(10);
-        return Consumsion_TaxsResource::collection($consumsion);
+        $consumsion = ConsumsionTaxs::paginate(10);
+        return ConsumsionTaxsResource::collection($consumsion);
     }
 
     public function store(Request $request)
@@ -37,7 +37,7 @@ class Consumsion_TaxsController extends Controller
 
             $payload = $request->only(['code_province', 'province_name', 'code_regency_city', 'regency_name_city', 'number_score_pph', 'unit', 'year']);
 
-            $DBCreate = Consumsion_Taxs::create($payload);
+            $DBCreate = ConsumsionTaxs::create($payload);
             return response()->json(
                 [
                     'data' => $DBCreate,
@@ -54,7 +54,7 @@ class Consumsion_TaxsController extends Controller
 
     public function destroy(string $id)
     {
-        $consumsion = Consumsion_Taxs::find($id);
+        $consumsion = ConsumsionTaxs::find($id);
 
         if (!$consumsion) {
             return response()->json(['message' => 'Data tidak ditemukan!'], 404);
@@ -71,7 +71,7 @@ class Consumsion_TaxsController extends Controller
 
     public function show(string $id)
     {
-        $consumsion = Consumsion_Taxs::find($id);
+        $consumsion = ConsumsionTaxs::find($id);
 
         if (!$consumsion) {
             return response()->json(['message' => 'Data tidak ditemukan', 'status' => false, 'data' => []], 200);
@@ -89,7 +89,7 @@ class Consumsion_TaxsController extends Controller
 
     public function update(Request $request, $id)
     {
-        $consumsion = Consumsion_Taxs::find($id);
+        $consumsion = ConsumsionTaxs::find($id);
         if (!$consumsion) {
             return response()->json(['message' => 'Data tidak ditemukan']);
         }
