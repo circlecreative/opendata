@@ -14,13 +14,13 @@ return new class extends Migration
         //
         Schema::create('ConsumsionTaxs', function (Blueprint $table) {
             $table->id();
-            $table->integer('code_province');
-            $table->string('province_name');
-            $table->integer('code_regency_city');
-            $table->string('regency_name_city');
-            $table->integer('number_score_pph');
-            $table->string('unit');
-            $table->string('year');
+            $table->integer('CodeProvince');
+            $table->string('ProvinceName');
+            $table->integer('CodeRegencyCity');
+            $table->string('RegencyNameCity');
+            $table->integer('NumberScorePPH');
+            $table->string('Unit');
+            $table->string('Year');
             $table->timestamps();
     });
 }
