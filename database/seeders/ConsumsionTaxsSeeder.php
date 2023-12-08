@@ -23,14 +23,13 @@ class ConsumsionTaxsSeeder extends Seeder
             while(($data = fgetcsv($csvData)) !== false){
                 //proses setiap baris dari csv
                 $rowData = [
-                    'id' => $data[0],
-                    'CodeProvince' => $data[1],
-                    'ProvinceName' => $data[2],
-                    'CodeRegencyCity'=> $data[3],
-                    'RegencyNameCity' => $data[4],
-                    'NumberScorePPH' => $data[5],
-                    'Unit' => $data[6],
-                    'Year'=> $data[7],
+                    'CodeProvince' => $data[0],
+                    'ProvinceName' => $data[1],
+                    'CodeRegencyCity'=> $data[2],
+                    'RegencyNameCity' => $data[3],
+                    'NumberScorePPH' => $data[4],
+                    'Unit' => $data[5],
+                    'Year'=> $data[6],
 
                 ];
                 ConsumsionTaxs::create($rowData);//simpan data kedalam model
