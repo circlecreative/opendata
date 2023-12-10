@@ -19,7 +19,7 @@ class ConsumsionTaxsController extends Controller
         return ConsumsionTaxsResource::collection($consumsionTaxs);
     }
 
-    public function store(Request $request)
+     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
 
