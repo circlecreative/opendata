@@ -21,6 +21,6 @@ class ConsumsionTaxsResource extends JsonResource
 
     public function withResponse(Request $request, JsonResponse $jsonResponse): void
     {
-        $jsonResponse->header('Message', 'Data berhasil disimpan');
+        $jsonResponse->header('Message', 'data berhasil diperbarui');
     }
 }
