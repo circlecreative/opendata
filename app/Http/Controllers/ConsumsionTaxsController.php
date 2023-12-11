@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\ConsumsionTaxsRequest;
 use App\Models\ConsumsionTaxs;
 use App\Http\Resources\ConsumsionTaxsResource;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -19,25 +21,12 @@ class ConsumsionTaxsController extends Controller
         return ConsumsionTaxsResource::collection($consumsionTaxs);
     }
 
-     public function store(Request $request)
+    public function store(ConsumsionTaxsRequest $request)
     {
-        $validator = Validator::make($request->all(),[
+        $validatedData = $request->validated();
 
-            'CodeProvince' => 'required|integer',
-            'ProvinceName' => 'required|string',
-            'CodeRegencyCity' => 'required|integer',
-            'RegencyNameCity' => 'required|string',
-            'NumberScorePPH' => 'required|integer',
-            'Unit' => 'required|string',
-            'Year' => 'required|string',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['message' => 'Data gagal ditambah', 'errors' => $validator->errors()],400);
-        }
-        $consumsionTaxs = ConsumsionTaxs::create($request->all());
+        $consumsionTaxs = ConsumsionTaxs::create($validatedData);
         return (new ConsumsionTaxsResource($consumsionTaxs))->response()->header('Message', 'Data berhasil ditambahkan');
-    
     }
 
     public function destroy($id)
@@ -49,12 +38,8 @@ class ConsumsionTaxsController extends Controller
         }
 
         $consumsionTaxs->delete();
-        return response()->json(['Message'=> 'Data berhasil dihapus'], 200);
-
-
+        return response()->json(['Message' => 'Data berhasil dihapus'], 200);
     }
-
-    
 
     public function show(string $id)
     {
@@ -66,30 +51,17 @@ class ConsumsionTaxsController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    public function update(ConsumsionTaxsRequest $request, $id)
     {
+        $validatedData = $request->validated();
+
         $consumsionTaxs = ConsumsionTaxs::find($id);
 
         if (!$consumsionTaxs) {
             return response()->json(['message' => 'Data tidak ditemukan'], 404);
         }
 
-        $validator = Validator::make($request->all(), [
-            'CodeProvince' => 'required|integer',
-            'ProvinceName' => 'required|string',
-            'CodeRegencyCity' => 'required|integer',
-            'RegencyNameCity' => 'required|string',
-            'NumberScorePPH' => 'required|integer',
-            'Unit' => 'required|string',
-            'Year' => 'required|string',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['message' => 'Data gagal diperbarui', 'errors'=> $validator->errors()], 400);
-        }
-
-        $consumsionTaxs->update($request->all());
+        $consumsionTaxs->update($validatedData);
         return (new ConsumsionTaxsResource($consumsionTaxs))->response()->header('Message', 'data berhasil diperbarui');
-       
     }
 }
