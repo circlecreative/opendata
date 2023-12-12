@@ -23,19 +23,12 @@ class ConsumsionTaxsController extends Controller
 
     public function store(ConsumsionTaxsRequest $request)
     {
-        $validatedData = $request->validated();
-
-        $consumsionTaxs = ConsumsionTaxs::create($validatedData);
-        return (new ConsumsionTaxsResource($consumsionTaxs))->response()->header('Message', 'Data berhasil ditambahkan');
+        return (new ConsumsionTaxsResource(ConsumsionTaxs::create($request->validated())))->response()->header('Message', 'Data berhasil ditambahkan');
     }
 
     public function destroy($id)
     {
-        $consumsionTaxs = ConsumsionTaxs::find($id);
-
-        if (!$consumsionTaxs) {
-            return response()->json(['message' => 'Data tidak ditemukan'], 404);
-        }
+        $consumsionTaxs = ConsumsionTaxs::findOrFail($id);
 
         $consumsionTaxs->delete();
         return response()->json(['Message' => 'Data berhasil dihapus'], 200);
@@ -43,25 +36,17 @@ class ConsumsionTaxsController extends Controller
 
     public function show(string $id)
     {
-        try {
-            $consumsionTaxs = ConsumsionTaxs::findOrFail($id);
-            return new ConsumsionTaxsResource($consumsionTaxs);
-        } catch (ModelNotFoundException $exception) {
+        $consumsionTaxs = ConsumsionTaxs::findOrFail($id);
+        if (!$consumsionTaxs) {
             return response()->json(['message' => 'Data tidak ditemukan'], 404);
         }
+        return new ConsumsionTaxsResource($consumsionTaxs);
     }
 
     public function update(ConsumsionTaxsRequest $request, $id)
     {
-        $validatedData = $request->validated();
+        $consumsionTaxs = ConsumsionTaxs::findOrFail($id)->update($request->validated());
 
-        $consumsionTaxs = ConsumsionTaxs::find($id);
-
-        if (!$consumsionTaxs) {
-            return response()->json(['message' => 'Data tidak ditemukan'], 404);
-        }
-
-        $consumsionTaxs->update($validatedData);
-        return (new ConsumsionTaxsResource($consumsionTaxs))->response()->header('Message', 'data berhasil diperbarui');
+        return (new ConsumsionTaxsResource(ConsumsionTaxs::findOrFail($id)))->response()->header('Message', 'data berhasil diperbarui');
     }
 }
