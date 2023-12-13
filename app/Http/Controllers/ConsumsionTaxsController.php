@@ -23,7 +23,7 @@ class ConsumsionTaxsController extends Controller
 
     public function store(ConsumsionTaxsRequest $request)
     {
-        return (new ConsumsionTaxsResource(ConsumsionTaxs::create($request->validated())))->response()->header('Message', 'Data berhasil ditambahkan');
+        return (new ConsumsionTaxsResource(ConsumsionTaxs::create($request->validated())))->response()->header('Message', 'Data Added Successfully');
     }
 
     public function destroy($id)
@@ -31,14 +31,14 @@ class ConsumsionTaxsController extends Controller
         $consumsionTaxs = ConsumsionTaxs::findOrFail($id);
 
         $consumsionTaxs->delete();
-        return response()->json(['Message' => 'Data berhasil dihapus'], 200);
+        return response()->json(['Message' => 'Deleted Successfully'], 200);
     }
 
     public function show(string $id)
     {
         $consumsionTaxs = ConsumsionTaxs::findOrFail($id);
         if (!$consumsionTaxs) {
-            return response()->json(['message' => 'Data tidak ditemukan'], 404);
+            return response()->json(['message' => 'Not Found!'], 404);
         }
         return new ConsumsionTaxsResource($consumsionTaxs);
     }
@@ -47,6 +47,6 @@ class ConsumsionTaxsController extends Controller
     {
         $consumsionTaxs = ConsumsionTaxs::findOrFail($id)->update($request->validated());
 
-        return (new ConsumsionTaxsResource(ConsumsionTaxs::findOrFail($id)))->response()->header('Message', 'data berhasil diperbarui');
+        return (new ConsumsionTaxsResource(ConsumsionTaxs::findOrFail($id)))->response()->header('Message', 'Updated Successfully');
     }
 }
