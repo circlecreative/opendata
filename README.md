@@ -4,7 +4,7 @@
 <!-- TOC START -->
 
 - [Produksi Padi Menurut Kabupaten/Kota di Indonesia](https://github.com/mellyniaramadhan762/RiceProductionByDistricts)
-- [Daftar Dalam Bahasa Lain](#daftar-dalam-bahasa-lain)
+- [Jumlah Pengeluaran per Kapita di Indonesia](https://github.com/mellyniaramadhan762/total-per-capita-expenditure-in-indonesia)
   - [Daftar Isi](#daftar-isi)
   - [Daftar API](#daftar-api)
     - [Agama Islam](#agama-islam)
