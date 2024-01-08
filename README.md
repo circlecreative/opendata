@@ -3,8 +3,8 @@
 
 <!-- TOC START -->
 
-- [Daftar API Lokal Indonesia](https://github.com/mellyniaramadhan762/RiceProductionByDistricts)
-  - [Daftar Dalam Bahasa Lain](#daftar-dalam-bahasa-lain)
+- [Produksi Padi Menurut Kabupaten/Kota di Indonesia](https://github.com/mellyniaramadhan762/RiceProductionByDistricts)
+- [Daftar Dalam Bahasa Lain](#daftar-dalam-bahasa-lain)
   - [Daftar Isi](#daftar-isi)
   - [Daftar API](#daftar-api)
     - [Agama Islam](#agama-islam)
