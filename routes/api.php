@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Resources\ConsumsionTaxsResource;
+use App\Http\Resources\MangoProductionsResource;
+use App\Http\Controllers\MangoProductionsController;
+use App\Models\MangoProductions;
 use App\Models\ConsumsionTaxs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,4 +29,10 @@ Route::get('/ConsumsionTaxs/{id}', [ConsumsionTaxsController::class, 'show']);
 Route::post('/ConsumsionTaxs', [ConsumsionTaxsController::class, 'store']);
 Route::put('/ConsumsionTaxs/{id}', [ConsumsionTaxsController::class, 'update']);
 Route::delete('/ConsumsionTaxs/{id}', [ConsumsionTaxsController::class, 'destroy']);
+
+Route::get('/MangoProductions', [MangoProductionsController::class, 'index']);
+Route::get('/MangoProductions/{id}', [MangoProductionsController::class, 'show']);
+Route::post('/MangoProductions', [MangoProductionsController::class, 'store']);
+Route::put('/MangoProductions/{id}', [MangoProductionsController::class, 'update']);
+Route::delete('/MangoProductions/{id}', [MangoProductionsController::class, 'destroy']);
 

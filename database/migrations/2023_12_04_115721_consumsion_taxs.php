@@ -21,8 +21,19 @@ return new class extends Migration
             $table->integer('NumberScorePPH');
             $table->string('Unit');
             $table->string('Year');
-            $table->timestamps();
     });
+    Schema::create('MangoProductions', function(Blueprint $table){
+        $table->id();
+        $table->integer('CodeProvince');
+        $table->string('ProvinceName');
+        $table->integer('CodeRegency');
+        $table->string('RegencyName');
+        $table->string('MangoProductions');
+        $table->string('Unit');
+        $table->string('Year');
+    });
+
+
 }
 
     /**
@@ -32,5 +43,6 @@ return new class extends Migration
     {
         //
         Schema::dropIfExists('ConsumsionTaxs');
+        Schema::dropIfExists('MangoProductions');
     }
 };
