@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(\Database\Seeders\BPS\RiceProductionByDistrictsSeeder::class);
         $this->call(\Database\Seeders\BPS\InflationRatesSeeder::class);
         $this->call(\Database\Seeders\OpenDataJabar\MangoProductionsSeeder::class);
+        $this->call(\Database\Seeders\OpenDataJabar\ConsumsionTaxsSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

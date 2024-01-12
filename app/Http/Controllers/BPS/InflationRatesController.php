@@ -13,10 +13,11 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Throwable;
-
 class InflationRatesController extends Controller
 {
+
     //
+ 
     public function index()
     {
         $inflationRates = InflationRates::paginate(10);
