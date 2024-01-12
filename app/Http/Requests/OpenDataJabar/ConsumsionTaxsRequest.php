@@ -4,7 +4,7 @@ namespace App\Http\Requests\OpenDataJabar;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MangoProductionsRequest extends FormRequest
+class ConsumsionTaxsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,13 +23,13 @@ class MangoProductionsRequest extends FormRequest
     {
         return [
             //
-            'CodeProvince' => 'required|integer',
-            'ProvinceName' => 'required|string',
-            'CodeRegencyCity' => 'required|integer',
-            'RegencyNameCity' => 'required|string',
-            'MangoProductions' => 'required|string',
-            'Unit' => 'required|string',
-            'Year' => 'required|string',
+            'CodeProvince'=> 'required|integer',
+            'ProvinceName'=> 'required|string',
+            'CodeRegencyCity'=> 'required|integer',
+            'RegencyNameCity'=> 'required|string',
+            'NumberScorePPH'=> 'required|integer',
+            'Unit'=> 'required|string',
+            'Year'=> 'required|integer',
         ];
     }
 }

@@ -4,12 +4,15 @@
 use App\Http\Resources\BPS\RiceProductionByDistrictsResource;
 use App\Http\Resources\BPS\InflationRatesResource;
 use App\Http\Resources\OpenDataJabar\MangoProductionsResource;
+use App\Http\Resources\OpenDataJabar\ConsumsionTaxsResource;
 use App\Http\Controllers\BPS\RiceProductionByDistrictsController;
 use App\Http\Controllers\BPS\InflationRatesController;
 use App\Http\Controllers\OpenDataJabar\MangoProductionsController;
+use App\Http\Controllers\OpenDataJabar\ConsumsionTaxsController;
 use App\Models\BPS\RiceProductionByDistricts;
 use App\Models\BPS\InflationRates;
 use App\Models\OpenDataJabar\MangoProductions;
+use App\Models\OpenDataJabar\ConsumsionTaxs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -50,3 +53,9 @@ Route::get('/OpenDataJabar/MangoProductions/{id}', [MangoProductionsController::
 Route::post('/OpenDataJabar/MangoProductions', [MangoProductionsController::class, 'store']);
 Route::put('/OpenDataJabar/MangoProductions/{id}', [MangoProductionsController::class, 'update']);
 Route::delete('/OpenDataJabar/MangoProductions/{id}', [MangoProductionsController::class, 'destroy']);
+
+Route::get('/OpenDataJabar/ConsumsionTaxs', [ConsumsionTaxsController::class, 'index']);
+Route::get('/OpenDataJabar/ConsumsionTaxs/{id}', [ConsumsionTaxsController::class, 'show']);
+Route::post('/OpenDataJabar/ConsumsionTaxs', [ConsumsionTaxsController::class, 'store']);
+Route::put('/OpenDataJabar/ConsumsionTaxs/{id}', [ConsumsionTaxsController::class, 'update']);
+Route::delete('/OpenDataJabar/ConsumsionTaxs/{id}', [ConsumsionTaxsController::class, 'destroy']);
