@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Resources;
-use Illuminate\Http\JsonResponse;
-use Illuminare\Database\Eloquent\Casts\Json;
+namespace App\Http\Resources\OpenDataJabar;
+
+use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\JsonResponse;
 
 class MangoProductionsResource extends JsonResource
 {
@@ -17,6 +18,7 @@ class MangoProductionsResource extends JsonResource
     {
         return parent::toArray($request);
     }
+
     public function withResponse(Request $request, JsonResponse $jsonResponse): void
     {
         $jsonResponse->header('Message', 'data berhasil diperbarui');

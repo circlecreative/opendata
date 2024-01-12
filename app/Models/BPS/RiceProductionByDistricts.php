@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\BPS;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MangoProductions extends Model
+class RiceProductionByDistricts extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $table = 'MangoProductions';
+    protected $table = 'RiceProductionByDistricts';
 
     protected $casts = [
-        'created_at' => 'datetime:Y-m-d',
-        'updated_at' => 'datetime:Y-m-d',
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
     ];
     public $timestamps = true;
 }
