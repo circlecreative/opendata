@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\OpenDataJabar;
 
-use App\Models\MangoProductions;
+use App\Models\OpenDataJabar\MangoProductions;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -16,7 +16,7 @@ class MangoProductionsSeeder extends Seeder
         //
         MangoProductions::truncate();
 
-        $csvData = fopen(base_path('database/csv/MangoProductions.csv'), 'r');
+        $csvData = fopen(base_path('database/csv/OpenDataJabar/MangoProductions.csv'), 'r');
 
         if($csvData !== false){
             while(($data = fgetcsv($csvData)) !==false){
@@ -34,5 +34,6 @@ class MangoProductionsSeeder extends Seeder
             }
             fclose($csvData);
         }
+        
     }
 }

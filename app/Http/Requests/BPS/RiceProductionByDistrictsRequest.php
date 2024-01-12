@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\BPS;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MangoProductionsRequest extends FormRequest
+class RiceProductionByDistrictsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,13 +23,14 @@ class MangoProductionsRequest extends FormRequest
     {
         return [
             //
-            'CodeProvince' => 'required|integer',
+            'CodeProvince' => 'required|string',
             'ProvinceName' => 'required|string',
-            'CodeRegency' => 'required|integer',
-            'RegencyName' => 'required|string',
-            'MangoProductions' => 'required|string',
-            'Unit' => 'required|string',
-            'Year' => 'required|string',
+            'CodeDistricts' => 'required|integer',
+            'DistrictsName' => 'required|string',
+            'TonsIn2020' => 'required|integer',
+            'TonsIn2021' => 'required|integer',
+            'TonsIn2022' => 'required|integer',
+            'TonsIn2023' => 'required|integer',
         ];
     }
 }

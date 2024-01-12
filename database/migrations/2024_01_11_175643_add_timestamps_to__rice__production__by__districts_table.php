@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('ConsumsionTaxs', function (Blueprint $table) {
+        Schema::table('RiceProductionByDistricts', function (Blueprint $table) {
             //
             $table->timestamps();
         });
@@ -22,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('ConsumsionTaxs', function (Blueprint $table) {
+        Schema::table('RiceProductionByDistricts', function (Blueprint $table) {
             //
             $table->dropTimestamps();
         });

@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,8 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(ConsumsionTaxsSeeder::class);
-        $this->call(MangoProductionsSeeder::class);
+        $this->call(\Database\Seeders\BPS\RiceProductionByDistrictsSeeder::class);
+        $this->call(\Database\Seeders\BPS\InflationRatesSeeder::class);
+        $this->call(\Database\Seeders\OpenDataJabar\MangoProductionsSeeder::class);
+
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

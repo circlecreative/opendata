@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Resources;
-
+namespace App\Http\Resources\BPS;
 use Illuminate\Database\Eloquent\Casts\Json;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Http\JsonResponse;
 
-class ConsumsionTaxsResource extends JsonResource
+class RiceProductionByDistrictsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,7 +17,6 @@ class ConsumsionTaxsResource extends JsonResource
     {
         return parent::toArray($request);
     }
-
     public function withResponse(Request $request, JsonResponse $jsonResponse): void
     {
         $jsonResponse->header('Message', 'data berhasil diperbarui');
