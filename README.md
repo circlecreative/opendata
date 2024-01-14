@@ -1,6 +1,6 @@
 
 ### Things todo list:
-1. Clone this repository: `git clone https://gitlab.com/laravel-web-application/laravel-api-repository-pattern.git`
+1. Clone this repository: `git clone https://github.com/circlecreative/opendata.git`
 2. Go inside the folder: `cd laravel-api-repository-pattern`
 3. Run `cp .env.example .env` then put your DB name & credentials
 4. Run `composer install`
