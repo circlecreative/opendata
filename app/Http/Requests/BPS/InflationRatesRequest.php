@@ -19,6 +19,27 @@ class InflationRatesRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+
+     /**
+     * @OA\Schema(
+     *     schema="InflationRates",
+     *     type="object",
+     *     required={
+     *         "City",
+     *         "2017PercentAmount",
+     *         "2018PercentAmount",
+     *         "2019PercentAmount",
+     *         "2020PercentAmount",
+     *         "2021PercentAmount"
+     *     },
+     *     @OA\Property(property="City", type="string"),
+     *     @OA\Property(property="2017PercentAmount", type="string"),
+     *     @OA\Property(property="2018PercentAmount", type="string"),
+     *     @OA\Property(property="2019PercentAmount", type="string"),
+     *     @OA\Property(property="2020PercentAmount", type="string"),
+     *     @OA\Property(property="2021PercentAmount", type="string"),
+     * )
+     */
     public function rules(): array
     {
         return [

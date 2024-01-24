@@ -12,6 +12,19 @@ class RiceProductionByDistrictsRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+        /**
+         * @OA\Schema(
+         *     schema="RiceProductionByDistricts",
+         *     @OA\Property(property="CodeProvince", type="integer"),
+         *     @OA\Property(property="ProvinceName", type="string"),
+         *     @OA\Property(property="CodeDistricts", type="integer"),
+         *     @OA\Property(property="DistrictsName", type="string"),
+         *     @OA\Property(property="TonsIn2020", type="integer"),
+         *     @OA\Property(property="TonsIn2021", type="integer"),
+         *     @OA\Property(property="TonsIn2022", type="integer"),
+         *     @OA\Property(property="TonsIn2023", type="integer"),
+         * )
+         */
     }
 
     /**
@@ -23,7 +36,7 @@ class RiceProductionByDistrictsRequest extends FormRequest
     {
         return [
             //
-            'CodeProvince' => 'required|string',
+            'CodeProvince' => 'required|integer',
             'ProvinceName' => 'required|string',
             'CodeDistricts' => 'required|integer',
             'DistrictsName' => 'required|string',
