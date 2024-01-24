@@ -1,18 +1,37 @@
 <?php
 
+/**
+ * @OA\Info(
+ *     version="1.0.0",
+ *     title="opendataAPI",
+ *     description="Open data API from open dataset",
+ *     termsOfService="http://your-terms-of-service.com",
+ *     @OA\Contact(
+ *         email="mellyniaramadhan762@gmail.com"
+ *     ),
+ *     @OA\License(
+ *         name="mellyniaramadhan",
+ *         url="http://your-license-url.com"
+ *     )
+ * )
+ */
+
+
 return [
     'default' => 'default',
     'documentations' => [
         'default' => [
             'api' => [
-                'title' => 'L5 Swagger UI',
+                'title' => 'opendataAPI',
             ],
 
             'routes' => [
                 /*
                  * Route for accessing api documentation interface
                 */
-                'api' => 'api/documentation',
+                'api' => 'api/Documentation',
+                'docs' => '/docs',
+                'json' => 'v1/swagger.json'
             ],
             'paths' => [
                 /*

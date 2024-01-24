@@ -1,0 +1,2347 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "opendataAPI",
+        "description": "Open data API from open dataset",
+        "contact": {
+            "email": "mellyniaramadhan762@gmail.com"
+        },
+        "license": {
+            "name": "mellyniaramadhan",
+            "url": "http://your-license-url.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/BPS/InflationRates": {
+            "get": {
+                "tags": [
+                    "Inflation Rates"
+                ],
+                "summary": "Get a list of inflation rates",
+                "operationId": "596b394638e959c12042a6826fecd452",
+                "responses": {
+                    "200": {
+                        "description": "List of inflation rates",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/InflationRates"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized. Authentication required"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/inflation-rates/{id}": {
+            "get": {
+                "tags": [
+                    "Inflation Rates"
+                ],
+                "summary": "Get details of an inflation rate",
+                "operationId": "097c0a9cd5c9c7c380ed1837f3045d78",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the inflation rate to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "city": {
+                                            "type": "string",
+                                            "example": "Meulaboh"
+                                        },
+                                        "2017PercentAmount": {
+                                            "type": "string",
+                                            "example": "4.76"
+                                        },
+                                        "2018PercentAmount": {
+                                            "type": "string",
+                                            "example": "0.96"
+                                        },
+                                        "2019PercentAmount": {
+                                            "type": "string",
+                                            "example": "4.28"
+                                        },
+                                        "2020PercentAmount": {
+                                            "type": "string",
+                                            "example": "4.24"
+                                        },
+                                        "2021PercentAmount": {
+                                            "type": "string",
+                                            "example": "2.07"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2024-01-15 13:47:57"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2024-01-15 13:47:57"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Not Found. Inflation rate with the given ID not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Inflation Rates"
+                ],
+                "summary": "Update an existing inflation rate",
+                "operationId": "7237b6a7ef25e53b62c6ba8e06ce40f8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the inflation rate to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Data to update an existing inflation rate",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "city": {
+                                        "type": "number",
+                                        "example": 2.5
+                                    },
+                                    "year": {
+                                        "type": "integer",
+                                        "example": 2022
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Inflation rate updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "city": {
+                                            "type": "number"
+                                        },
+                                        "year": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found. Inflation rate with the given ID not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity. Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized. Authentication required"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Inflation Rates"
+                ],
+                "summary": "Delete an inflation rate",
+                "operationId": "dee404681797a2a9d624f99868799665",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the inflation rate to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Inflation rate deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deleted Successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Not Found. Inflation rate with the given ID not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/inflation-rates": {
+            "post": {
+                "tags": [
+                    "Inflation Rates"
+                ],
+                "summary": "Create a new inflation rate",
+                "operationId": "a51d1803523e991a2f2046abcdd37852",
+                "requestBody": {
+                    "description": "Data to create a new inflation rate",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "city": {
+                                        "type": "number"
+                                    },
+                                    "year": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "example": {
+                                "city": "example city",
+                                "year": "example year"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Inflation rate created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "city": {
+                                            "type": "string",
+                                            "example": "Meulaboh"
+                                        },
+                                        "2017PercentAmount": {
+                                            "type": "string",
+                                            "example": "4.76"
+                                        },
+                                        "2018PercentAmount": {
+                                            "type": "string",
+                                            "example": "0.96"
+                                        },
+                                        "2019PercentAmount": {
+                                            "type": "string",
+                                            "example": "4.28"
+                                        },
+                                        "2020PercentAmount": {
+                                            "type": "string",
+                                            "example": "4.24"
+                                        },
+                                        "2021PercentAmount": {
+                                            "type": "string",
+                                            "example": "2.07"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2024-01-15 13:47:57"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2024-01-15 13:47:57"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity. Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/BPS/RiceProductionByDistricts": {
+            "get": {
+                "tags": [
+                    "Rice Production"
+                ],
+                "summary": "Get a paginated list of rice production data by districts.",
+                "operationId": "ef72c4aad1899a63f887670ce505e7f2",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number for pagination.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Number of items per page.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/RiceProductionByDistricts"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/BPS": {
+            "post": {
+                "tags": [
+                    "Rice Production"
+                ],
+                "summary": "Create a new rice production record.",
+                "operationId": "4aea0bb546e11967ab15c4f4e8b599d0",
+                "requestBody": {
+                    "description": "Data to be added",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "CodeProvince": {
+                                        "type": "integer"
+                                    },
+                                    "ProvinceName": {
+                                        "type": "string"
+                                    },
+                                    "CodeDistrict": {
+                                        "type": "integer"
+                                    },
+                                    "DistrictName": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "example": {
+                                "CodeProvince": "example CodeProvince",
+                                "ProvinceName": "example ProvinceName",
+                                "CodeDistrict": "example CodeDistrict",
+                                "DistrictName": "Example DistrictName",
+                                "TonsIn2020": "Example TonsIn2020",
+                                "TonsIn2021": "Example TonsIn2021",
+                                "TonsIn2022": "Example TonsIn2022",
+                                "TonsIn2023": "Example TonsIn2023"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data added successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "CodeProvince": {
+                                            "type": "integer",
+                                            "example": "32"
+                                        },
+                                        "ProvinceName": {
+                                            "type": "string",
+                                            "example": "Jawa Barat"
+                                        },
+                                        "CodeDistricts": {
+                                            "type": "integer",
+                                            "example": 3201
+                                        },
+                                        "DistrictsName": {
+                                            "type": "string",
+                                            "example": "Bogor"
+                                        },
+                                        "TonsIn2020": {
+                                            "type": "integer",
+                                            "example": 0
+                                        },
+                                        "TonsIn2021": {
+                                            "type": "integer",
+                                            "example": 28515
+                                        },
+                                        "TonsIn2022": {
+                                            "type": "integer",
+                                            "example": 299893.8
+                                        },
+                                        "TonsIn2023": {
+                                            "type": "integer",
+                                            "example": 281153
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "example": {
+                                                "fieldName": [
+                                                    "Error message"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/BPS/RiceProductionByDistricts/{id}": {
+            "get": {
+                "tags": [
+                    "Rice Production"
+                ],
+                "summary": "Get a specific rice production record by ID.",
+                "description": "Display the specified resource.",
+                "operationId": "20656617a1f16dab2085e0effdcefd57",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the rice production record to be retrieved.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/RiceProductionByDistricts"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "Not Found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Rice Production"
+                ],
+                "summary": "Delete a rice production record by ID.",
+                "operationId": "8d1672d5c8df55584e2678c688d8dd0a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the rice production record to be deleted.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "Deleted Successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/Kominfo/UmkmGoOnlines": {
+            "get": {
+                "tags": [
+                    "Umkm Go Onlines"
+                ],
+                "summary": "Get a paginated list of Umkm Go Onlines data from Kominfo.",
+                "operationId": "31004035f2627c51124f3f662f322980",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number for pagination.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Number of items per page.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/UmkmGoOnlines"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/Kominfo": {
+            "post": {
+                "tags": [
+                    "Umkm Go Onlines"
+                ],
+                "summary": "Create a new Umkm Go Online record.",
+                "operationId": "9d6493ff9bf3c0933f833fa013b4c792",
+                "requestBody": {
+                    "description": "Data to be added",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "LocationOfMarketGrebegActivities": {
+                                        "type": "string"
+                                    },
+                                    "OnBoardingAchievments": {
+                                        "type": "ineteger"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "example": {
+                                "LocationOfMarketGrebegActivities": "example LocationOfMarketGrebegActivities",
+                                "OnBoardingAchievments": "example OnBoardingAchievments"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data added successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "LocationOfMarketGrebegActivities": {
+                                            "type": "string",
+                                            "example": "Kota Jakarta"
+                                        },
+                                        "OnBoardingAchievments": {
+                                            "type": "integer",
+                                            "example": "2011"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "example": {
+                                                "fieldName": [
+                                                    "Error message"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Kominfo/UmkmGoOnlines/{id}": {
+            "get": {
+                "tags": [
+                    "Umkm Go Onlines"
+                ],
+                "summary": "Get a specific Umkm Go Onlines record by ID.",
+                "description": "Display the specified resource.",
+                "operationId": "a6aee0248c9e5a4b331aa139cafc83ae",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Umkm Go Onlines record to be retrieved.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/UmkmGoOnlines"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "Not Found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Umkm Go Onlines"
+                ],
+                "summary": "Update Umkm Go Onlines data by districts",
+                "description": "Update Umkm Go Onlines data based on the given ID",
+                "operationId": "updateUmkmGoOnlines",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Umkm Go Onlines data to be updated",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "LocationOfMarketGrebegActivities": {
+                                    "type": "string"
+                                },
+                                "OnBoardingAchievments": {
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object",
+                            "example": {
+                                "LocationOfMarketGrebegActivities": "example LocationOfMarketGrebegActivities",
+                                "OnBoardingAchievments": "example OnBoardingAchievments"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Umk Go Onlines data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Umkm Go Onlines data updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "LocationOfMarketGrebegActivities": {
+                                            "description": "Location Of Market Grebeg Activities",
+                                            "type": "string",
+                                            "example": "Kota Jakarta"
+                                        },
+                                        "OnBoardingAchievments": {
+                                            "description": "On Boarding Achievments",
+                                            "type": "integer",
+                                            "example": "2011"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Umkm Go Onlines data not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not Found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Umkm Go Onlines"
+                ],
+                "summary": "Delete a Umkm Go Onlines record by ID.",
+                "operationId": "ea4fab3021ee8914ba8f38bde8224a7d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Umkm Go Onlines record to be deleted.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "Deleted Successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/OpenDataJabar/ConsumsionTaxs": {
+            "get": {
+                "tags": [
+                    "Consumsion Taxs"
+                ],
+                "summary": "Get a paginated list of Consumsion Taxs.",
+                "operationId": "fa01f199e28d23d27e86d37b24a3d524",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number for pagination.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Number of items per page.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ConsumsionTaxs"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/OpenDataJabar": {
+            "post": {
+                "tags": [
+                    "Consumsion Taxs"
+                ],
+                "summary": "Create a new Consumsion Taxs record.",
+                "operationId": "46b783713c91a419e4ff3810be94b311",
+                "requestBody": {
+                    "description": "Data to be added",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "CodeProvince": {
+                                        "type": "integer"
+                                    },
+                                    "ProvinceName": {
+                                        "type": "string"
+                                    },
+                                    "CodeRegencyCity": {
+                                        "type": "integer"
+                                    },
+                                    "RegencyNameCity": {
+                                        "type": "string"
+                                    },
+                                    "NumberScorePPH": {
+                                        "type": "integer"
+                                    },
+                                    "Unit": {
+                                        "type": "string"
+                                    },
+                                    "Year": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "example": {
+                                "CodeProvince": "example CodeProvince",
+                                "ProvinceName": "example ProvinceName",
+                                "CodeRegencyName": "example CodeRegencyName",
+                                "RegencyNameCity": "Example RegencyNameCity",
+                                "NumberScorePPH": "Example NumberScorePPH",
+                                "Unit": "Example Unit",
+                                "Year": "Example Year"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data added successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "CodeProvince": {
+                                            "type": "integer",
+                                            "example": "32"
+                                        },
+                                        "ProvinceName": {
+                                            "type": "string",
+                                            "example": "Jawa Barat"
+                                        },
+                                        "CodeRegencyName": {
+                                            "type": "integer",
+                                            "example": 3201
+                                        },
+                                        "RegencyNameCity": {
+                                            "type": "string",
+                                            "example": "Kabupaten Bogor"
+                                        },
+                                        "NumberScorePPH": {
+                                            "type": "integer",
+                                            "example": 81
+                                        },
+                                        "Unit": {
+                                            "type": "string",
+                                            "example": "POINT"
+                                        },
+                                        "Year": {
+                                            "type": "integer",
+                                            "example": 2021
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "example": {
+                                                "fieldName": [
+                                                    "Error message"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/OpenDataJabar/ConsumsionTaxs/{id}": {
+            "put": {
+                "tags": [
+                    "Consumsion Taxs"
+                ],
+                "summary": "Update ConsumsionTaxs ",
+                "description": "Update Consumsion Taxs based on the given ID",
+                "operationId": "updateConsumsionTaxs",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Consumsion Taxs data to be updated",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "CodeProvince": {
+                                    "type": "integer"
+                                },
+                                "ProvinceName": {
+                                    "type": "string"
+                                },
+                                "CodeRegencyCity": {
+                                    "type": "integer"
+                                },
+                                "RegencyNameCity": {
+                                    "type": "string"
+                                },
+                                "NumberScorePPH": {
+                                    "type": "integer"
+                                },
+                                "Unit": {
+                                    "type": "string"
+                                },
+                                "Year": {
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object",
+                            "example": {
+                                "CodeProvince": "example CodeProvince",
+                                "ProvinceName": "example ProvinceName",
+                                "CodeRegencyName": "example CodeRegencyName",
+                                "RegencyNameCity": "Example RegencyNameCity",
+                                "NumberScorePPH": "Example NumberScorePPH",
+                                "Unit": "Example Unit",
+                                "Year": "Example Year"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Updated Consumsion Taxs data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Consumsion Taxs data updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "CodeProvince": {
+                                            "description": "Province code",
+                                            "type": "integer",
+                                            "example": "32"
+                                        },
+                                        "ProvinceName": {
+                                            "description": "Province name",
+                                            "type": "string",
+                                            "example": "Jawa Barat"
+                                        },
+                                        "CodeRegencyName": {
+                                            "description": "CodeRegencyName",
+                                            "type": "integer",
+                                            "example": 3201
+                                        },
+                                        "RegencyNameCity": {
+                                            "description": "NameRegencyCity",
+                                            "type": "string",
+                                            "example": "Kota Bogor"
+                                        },
+                                        "NumberScorePPH": {
+                                            "description": "NumberScorePPH",
+                                            "type": "integer",
+                                            "example": 81
+                                        },
+                                        "Unit": {
+                                            "description": "Unit",
+                                            "type": "string",
+                                            "example": "POINT"
+                                        },
+                                        "Year": {
+                                            "description": "Year",
+                                            "type": "integer",
+                                            "example": 2021
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "ConsumsionTaxs data not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not Found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Consumsion Taxs"
+                ],
+                "summary": "Delete a Consumsion Taxs record by ID.",
+                "operationId": "b6e51b9286b7f380296a4961a8dc81cf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Consumsion Taxs record to be deleted.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "Deleted Successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/Kominfo/ConsumsionTaxs/{id}": {
+            "get": {
+                "tags": [
+                    "Consumsion Taxs"
+                ],
+                "summary": "Get a specific Consumsion Taxs by ID.",
+                "description": "Display the specified resource.",
+                "operationId": "a016713bc5bc8927d0168549469fa9ea",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Consumsion Taxs record to be retrieved.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ConsumsionTaxs"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "Not Found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/OpenDataJabar/MangoProductions": {
+            "get": {
+                "tags": [
+                    "Mango Productions"
+                ],
+                "summary": "Get a paginated list of Mango Productions.",
+                "operationId": "4a4bf22e3a70994c6e6235905762181f",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number for pagination.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Number of items per page.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/MangoProductions"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/OpenDatajabar": {
+            "post": {
+                "tags": [
+                    "Mango Productions"
+                ],
+                "summary": "Create a new Mango Productions record.",
+                "operationId": "5860c4c9147513ba89124acbe2be2d27",
+                "requestBody": {
+                    "description": "Data to be added",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "CodeProvince": {
+                                        "type": "integer"
+                                    },
+                                    "ProvinceName": {
+                                        "type": "string"
+                                    },
+                                    "CodeRegencyCity": {
+                                        "type": "integer"
+                                    },
+                                    "RegencyNameCity": {
+                                        "type": "string"
+                                    },
+                                    "MangoProductions": {
+                                        "type": "integer"
+                                    },
+                                    "Unit": {
+                                        "type": "string"
+                                    },
+                                    "Year": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "example": {
+                                "CodeProvince": "example CodeProvince",
+                                "ProvinceName": "example ProvinceName",
+                                "CodeRegencyCity": "example CodeRegencyCity",
+                                "RegencyCityName": "Example RegencyCityName",
+                                "MangoProductions": "Example MangoProductions",
+                                "Unit": "Example Unit",
+                                "Year": "Example Year"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data added successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "CodeProvince": {
+                                            "type": "integer",
+                                            "example": "32"
+                                        },
+                                        "ProvinceName": {
+                                            "type": "string",
+                                            "example": "Jawa Barat"
+                                        },
+                                        "CodeRegencyCity": {
+                                            "type": "integer",
+                                            "example": 3201
+                                        },
+                                        "RegencyCityName": {
+                                            "type": "string",
+                                            "example": "Kabupaten Bogor"
+                                        },
+                                        "MangoProductions": {
+                                            "type": "integer",
+                                            "example": 29405
+                                        },
+                                        "Unit": {
+                                            "type": "string",
+                                            "example": "KUINTAL"
+                                        },
+                                        "Year": {
+                                            "type": "string",
+                                            "example": "2021"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "example": {
+                                                "fieldName": [
+                                                    "Error message"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/OpenDataJabar/MangoProductions/{id}": {
+            "get": {
+                "tags": [
+                    "Mango Productions"
+                ],
+                "summary": "Get a specific Mango Productions by ID.",
+                "description": "Display the specified resource.",
+                "operationId": "3602bdb8236ece0df3c97955d2bd42c1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Mango Productions record to be retrieved.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/MangoProductions"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "Not Found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Mango Productions"
+                ],
+                "summary": "Update MangoProductions",
+                "description": "Update Mango Productions based on the given ID",
+                "operationId": "updateMangoProductions",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Mango Productions data to be updated",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "CodeProvince": {
+                                    "type": "integer"
+                                },
+                                "ProvinceName": {
+                                    "type": "string"
+                                },
+                                "CodeRegencyCity": {
+                                    "type": "integer"
+                                },
+                                "RegencyNameCity": {
+                                    "type": "string"
+                                },
+                                "MangoProductions": {
+                                    "type": "string"
+                                },
+                                "Unit": {
+                                    "type": "string"
+                                },
+                                "Year": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object",
+                            "example": {
+                                "CodeProvince": "example CodeProvince",
+                                "ProvinceName": "example ProvinceName",
+                                "CodeRegencyCity": "example CodeRegencyCity",
+                                "RegencyNameCity": "Example RegencyNameCity",
+                                "MangoProduction": "Example MangoProductions",
+                                "Unit": "Example Unit",
+                                "Year": "Example Year"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Updated Mango Productions data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Mango Productions data updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "CodeProvince": {
+                                            "type": "integer",
+                                            "example": "32"
+                                        },
+                                        "ProvinceName": {
+                                            "type": "string",
+                                            "example": "Jawa Barat"
+                                        },
+                                        "CodeRegencyCity": {
+                                            "type": "integer",
+                                            "example": 3201
+                                        },
+                                        "RegencyNameCity": {
+                                            "type": "string",
+                                            "example": "Kabupaten Bogor"
+                                        },
+                                        "MangoProduction": {
+                                            "type": "integer",
+                                            "example": 29405
+                                        },
+                                        "Unit": {
+                                            "type": "string",
+                                            "example": "KUINTAL"
+                                        },
+                                        "Year": {
+                                            "type": "string",
+                                            "example": "2013"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Mango Productions data not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not Found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Mango Productions"
+                ],
+                "summary": "Delete a Mango Productions record by ID.",
+                "operationId": "6dd47e15e74cd84c033a7a5f4971b510",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Mango Productions record to be deleted.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "Deleted Successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/OpenDataJabar/PondSaltProductions": {
+            "get": {
+                "tags": [
+                    "Pond Salt Productions"
+                ],
+                "summary": "Get a paginated list of Pond  Salt Productions.",
+                "operationId": "e9c83e5f8a28e09bfe9f903353f7869f",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number for pagination.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Number of items per page.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/PondSaltProductions"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/PondSaltProductions/{id}": {
+            "get": {
+                "tags": [
+                    "Pond Salt Productions"
+                ],
+                "summary": "Get details of an inflation rate",
+                "operationId": "2b0282cec93a0c7b0e63620619614473",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Pond Salt Productions to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "CodeRegency": {
+                                            "type": "integer",
+                                            "example": "3215"
+                                        },
+                                        "RegencyName": {
+                                            "type": "string",
+                                            "example": "KARAWANG"
+                                        },
+                                        "CodeSubdisctrict": {
+                                            "type": "integer",
+                                            "example": "3215010"
+                                        },
+                                        "NameSubdistrict": {
+                                            "type": "string",
+                                            "example": "PANGKALAN"
+                                        },
+                                        "ValueOfSaltProductions": {
+                                            "type": "string",
+                                            "example": "0"
+                                        },
+                                        "Unit": {
+                                            "type": "string",
+                                            "example": "RIBU RUPIAH"
+                                        },
+                                        "Year": {
+                                            "type": "string",
+                                            "example": "2020"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2024-01-24 13:47:57"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2024-01-24 13:47:57"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Not Found. Pond Salt Productions with the given ID not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Pond Salt Productions"
+                ],
+                "summary": "Delete an Pond Salt Productions",
+                "operationId": "80be3c051db7458f8a2602f7a24b043e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Pond Salt Productions to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pond Salt Produtions deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deleted Successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Not Found. Pond Salt Productions with the given ID not found"
+                    }
+                }
+            }
+        },
+        "/api/Pond Salt Productions": {
+            "post": {
+                "tags": [
+                    "Pond Salt Productions"
+                ],
+                "summary": "Create a new Pond Salt Productions",
+                "operationId": "313a744ebfb1b3e795b9dc2c1ada2d69",
+                "requestBody": {
+                    "description": "Data to create a new Pond Salt Productions",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "CodeRegency": {
+                                        "type": "integer"
+                                    },
+                                    "RegencyName": {
+                                        "type": "string"
+                                    },
+                                    "CodeSubdsictrict": {
+                                        "type": "integer"
+                                    },
+                                    "NameSubdistrict": {
+                                        "type": "string"
+                                    },
+                                    "ValueOfSaltProductions": {
+                                        "type": "integer"
+                                    },
+                                    "Unit": {
+                                        "type": "string"
+                                    },
+                                    "Year": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "example": {
+                                "CodeRegency": "example CodeRegency",
+                                "RegencyName": "example RegencyName",
+                                "CodeSubdistrict": "example CodeSubdistrict",
+                                "NameSubdistrict": "example NameSubdistrict",
+                                "ValueOfSaltProductions": "example ValueOfSaltProductions",
+                                "Unit": "example Unit",
+                                "Year": "example Year"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "PondSaltProductions created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "CodeRegency": {
+                                            "type": "integer",
+                                            "example": "3215"
+                                        },
+                                        "RegencyName": {
+                                            "type": "string",
+                                            "example": "KARAWANG"
+                                        },
+                                        "CodeSubdisctrict": {
+                                            "type": "integer",
+                                            "example": "3215010"
+                                        },
+                                        "NameSubdistrict": {
+                                            "type": "string",
+                                            "example": "PANGKALAN"
+                                        },
+                                        "ValueOfSaltProductions": {
+                                            "type": "string",
+                                            "example": "0"
+                                        },
+                                        "Unit": {
+                                            "type": "string",
+                                            "example": "RIBU RUPIAH"
+                                        },
+                                        "Year": {
+                                            "type": "string",
+                                            "example": "2020"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2024-01-24 13:47:57"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2024-01-24 13:47:57"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity. Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/pondsaltproductions/{id}": {
+            "put": {
+                "tags": [
+                    "Pond Salt Productions"
+                ],
+                "summary": "Update an existing pondsaltproductions",
+                "operationId": "e7f4a8542ce8025e89312a8382477866",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the pond salt productions to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Data to update an existing pond salt productions",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "CodeRegency": {
+                                        "type": "integer",
+                                        "example": "3215"
+                                    },
+                                    "RegencyName": {
+                                        "type": "string",
+                                        "example": "KARAWANG"
+                                    },
+                                    "CodeSubdisctrict": {
+                                        "type": "integer",
+                                        "example": "3215010"
+                                    },
+                                    "NameSubdistrict": {
+                                        "type": "string",
+                                        "example": "PANGKALAN"
+                                    },
+                                    "ValueOfSaltProductions": {
+                                        "type": "string",
+                                        "example": "0"
+                                    },
+                                    "Unit": {
+                                        "type": "string",
+                                        "example": "RIBU RUPIAH"
+                                    },
+                                    "Year": {
+                                        "type": "string",
+                                        "example": "2020"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "pond salt productions updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "CodeRegency": {
+                                            "type": "integer"
+                                        },
+                                        "RegencyName": {
+                                            "type": "string"
+                                        },
+                                        "CodeSubdistrict": {
+                                            "type": "integer"
+                                        },
+                                        "NameSubdistrict": {
+                                            "type": "string"
+                                        },
+                                        "ValueOfSaltProductions": {
+                                            "type": "ValueOfSaltProductions"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found. Pond Salt Productions with the given ID not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity. Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized. Authentication required"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "RiceProductionByDistricts": {
+                "properties": {
+                    "CodeProvince": {
+                        "type": "string"
+                    },
+                    "ProvinceName": {
+                        "type": "string"
+                    },
+                    "CodeDistricts": {
+                        "type": "integer"
+                    },
+                    "DistrictsName": {
+                        "type": "string"
+                    },
+                    "TonsIn2020": {
+                        "type": "integer"
+                    },
+                    "TonsIn2021": {
+                        "type": "integer"
+                    },
+                    "TonsIn2022": {
+                        "type": "integer"
+                    },
+                    "TonsIn2023": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "ValidationError": {
+                "properties": {
+                    "message": {
+                        "description": "Error message",
+                        "type": "string"
+                    },
+                    "errors": {
+                        "description": "Validation errors",
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "UmkmGoOnlines": {
+                "properties": {
+                    "LocationOfMarketGrebegActivities": {
+                        "type": "string"
+                    },
+                    "OnBoardingAchievments": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "ConsumsionTaxs": {
+                "properties": {
+                    "CodeProvince": {
+                        "type": "integer"
+                    },
+                    "ProvinceName": {
+                        "type": "string"
+                    },
+                    "CodeRegencyCity": {
+                        "type": "integer"
+                    },
+                    "RegencyNameCity": {
+                        "type": "string"
+                    },
+                    "NumberScorePPH": {
+                        "type": "integer"
+                    },
+                    "Unit": {
+                        "type": "string"
+                    },
+                    "Year": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "MangoProductions": {
+                "properties": {
+                    "CodeProvince": {
+                        "type": "integer"
+                    },
+                    "ProvinceName": {
+                        "type": "string"
+                    },
+                    "CodeRegencyCity": {
+                        "type": "integer"
+                    },
+                    "RegencyNameCity": {
+                        "type": "string"
+                    },
+                    "MangoProductions": {
+                        "type": "string"
+                    },
+                    "Unit": {
+                        "type": "string"
+                    },
+                    "Year": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "PondSaltProductions": {
+                "title": "Pond Salt Productions",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "CodeRegency": {
+                        "type": "integer"
+                    },
+                    "RegencyName": {
+                        "type": "string"
+                    },
+                    "CodeSubdisctrict": {
+                        "type": "integer"
+                    },
+                    "NameSubdistrict": {
+                        "type": "string"
+                    },
+                    "ValueOfSaltProductions": {
+                        "type": "string"
+                    },
+                    "Unit": {
+                        "type": "string"
+                    },
+                    "Year": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "InflationRates": {
+                "required": [
+                    "City",
+                    "2017PercentAmount",
+                    "2018PercentAmount",
+                    "2019PercentAmount",
+                    "2020PercentAmount",
+                    "2021PercentAmount"
+                ],
+                "properties": {
+                    "City": {
+                        "type": "string"
+                    },
+                    "2017PercentAmount": {
+                        "type": "string"
+                    },
+                    "2018PercentAmount": {
+                        "type": "string"
+                    },
+                    "2019PercentAmount": {
+                        "type": "string"
+                    },
+                    "2020PercentAmount": {
+                        "type": "string"
+                    },
+                    "2021PercentAmount": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

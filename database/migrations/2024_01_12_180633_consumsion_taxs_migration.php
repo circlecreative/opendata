@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('RegencyNameCity');
             $table->integer('NumberScorePPH');
             $table->string('Unit');
-            $table->string('Year');
+            $table->integer('Year');
         });
     }
 
