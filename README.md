@@ -5,7 +5,7 @@
 3. Run `cp .env.example .env` then put opendataAPI on DB_Database
 4. Run `composer install`
 5. Run `php artisan key:generate`
-6. Run `php artisan migrate:fresh`
+6. Run `php artisan migrate`
 7. Run `php artisan db:seed`
 8. Run `php artisan serve`
 9. Open your favorite REST API Client such as [POSTMAN](https://www.postman.com/downloads/) or [Insomnia](https://insomnia.rest/download/)
