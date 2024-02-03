@@ -218,9 +218,6 @@ class InflationRatesController extends Controller
      *         response=401,
      *         description="Unauthorized. Authentication required",
      *     ),
-     *     security={
-     *         {"bearerAuth": {}}
-     *     }
      * )
      */
 

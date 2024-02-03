@@ -96,8 +96,8 @@ class RiceProductionByDistrictsController extends Controller
      *              @OA\Property(
      *                  property="DistrictName",
      *                  type="string"
-     *              ),  
-     *           
+     *              ),
+     *
      *                  example={
      *                     "CodeProvince":"example CodeProvince",
      *                     "ProvinceName":"example ProvinceName",
@@ -108,8 +108,8 @@ class RiceProductionByDistrictsController extends Controller
      *                     "TonsIn2022":"Example TonsIn2022",
      *                     "TonsIn2023":"Example TonsIn2023"
      *                }
-     *              
-     *             
+     *
+     *
      *         ),
      *     ),
      *     @OA\Response(
@@ -228,96 +228,66 @@ class RiceProductionByDistrictsController extends Controller
     }
 
     /**
-     *
      * @OA\Put(
-     *      path="/api/BPS/rice-production/{id}",
-     *      operationId="updateRiceProductionByDistricts",
-     *      tags={"Rice Production"},
-     *      summary="Update rice production data by districts",
-     *      description="Update rice production data by districts based on the given ID",
-     *      @OA\Parameter(
-     *          name="id",
-     *          in="path",
-     *          required=true,
-     *          description="ID of the rice production data to be updated",
-     *          @OA\Schema(
-     *              type="object",
-     *              @OA\Property(
-     *                  property="CodeProvince",
-     *                  type="integer"
-     *              ),
-     *              @OA\Property(
-     *                  property="ProvinceName",
-     *                  type="string"
-     *              ),
-     *              @OA\Property(
-     *                  property="CodeDistrict",
-     *                  type="integer"
-     *              ),
-     *              @OA\Property(
-     *                  property="DistrictName",
-     *                  type="string"
-     *              ),  
-     *           
-     *                  example={
-     *                     "CodeProvince":"example CodeProvince",
-     *                     "ProvinceName":"example ProvinceName",
-     *                     "CodeDistrict":"example CodeDistrict",
-     *                     "DistrictName":"Example DistrictName",
-     *                     "TonsIn2020":"Example TonsIn2020",
-     *                     "TonsIn2021":"Example TonsIn2021",
-     *                     "TonsIn2022":"Example TonsIn2022",
-     *                     "TonsIn2023":"Example TonsIn2023"
-     *                }
-     *          ),
-     *      ),
-     *      @OA\RequestBody(
-     *          required=true,
-     *          description="Updated rice production data",
-     *          @OA\JsonContent(
-     *              
-     *          )
-     *      ),
-     *           @OA\Response(
-     *                response=200,
-     *                description="Rice production data updated successfully",
-     *                @OA\JsonContent(
-     *                  type="object",
-     *                  @OA\Property(property="CodeProvince", type="string", description="Province code", example="32"),
-     *                  @OA\Property(property="ProvinceName", type="string", description="Province name", example="Jawa Barat"),
-     *                  @OA\Property(property="CodeDistricts", type="integer", description="Districts code", example=3201),
-     *                  @OA\Property(property="DistrictsName", type="string", description="Districts name", example="Sukabumi"),
-     *                  @OA\Property(property="TonsIn2020", type="integer", description="Tons in 2020", example=0),
-     *                  @OA\Property(property="TonsIn2021", type="integer", description="Tons in 2021", example=492926.3),
-     *                  @OA\Property(property="TonsIn2022", type="integer", description="Tons in 2022", example=508220.48),
-     *                  @OA\Property(property="TonsIn2023", type="integer", description="Tons in 2023", example=515136),
-     *              ),
-     *          ),
-     *
-     *      @OA\Response(
-     *          response=404,
-     *          description="Rice production data not found",
-     *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Not Found"),
-     *          )
-     *      ),
-     *      @OA\Response(
-     *          response=422,
-     *          description="Validation error",
-     *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="The given data was invalid.")
-     *          )
-     *      ),
+     *     path="/api/BPS/RiceProductionByDistricts/{id}",
+     *     summary="Update an existing rice production",
+     *     tags={"Rice Production"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID of the rice production to update",
+     *         @OA\Schema(type="integer"),
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="Data to update an existing rice production",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="CodeProvince", type="string", example="32"),
+     *             @OA\Property(property="ProvinceName", type="string", example="Jawa Barat"),
+     *             @OA\Property(property="CodeDistricts", type="integer", example=3201),
+     *             @OA\Property(property="DistrictsName", type="string", example="Sukabumi"),
+     *             @OA\Property(property="TonsIn2020", type="integer", example=0),
+     *             @OA\Property(property="TonsIn2021", type="integer", example=492926.3),
+     *             @OA\Property(property="TonsIn2022", type="integer", example=508220.48),
+     *             @OA\Property(property="TonsIn2023", type="integer", example=515136),
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Rice Production updated successfully",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="CodeProvince", type="string"),
+     *             @OA\Property(property="ProvinceName", type="string"),
+     *             @OA\Property(property="CodeDistricts", type="integer"),
+     *             @OA\Property(property="DistrictsName", type="string"),
+     *             @OA\Property(property="TonsIn2020", type="integer"),
+     *             @OA\Property(property="TonsIn2021", type="integer"),
+     *             @OA\Property(property="TonsIn2022", type="integer"),
+     *             @OA\Property(property="TonsIn2023", type="integer"),
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Not Found. Rice Production with the given ID not found",
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Unprocessable Entity. Validation error",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="message", type="string", example="The given data was invalid."),
+     *             @OA\Property(property="errors", type="object"),
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Unauthorized. Authentication required",
+     *     ),
      * )
      */
-
-     /**
- * @OA\Schema(
- *     schema="ValidationError",
- *     @OA\Property(property="message", type="string", description="Error message"),
- *     @OA\Property(property="errors", type="object", description="Validation errors"),
- * )
- */
 
     public function update(RiceProductionByDistrictsRequest $request, $id)
     {

@@ -207,12 +207,7 @@
                     "401": {
                         "description": "Unauthorized. Authentication required"
                     }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
+                }
             },
             "delete": {
                 "tags": [
@@ -582,6 +577,132 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Rice Production"
+                ],
+                "summary": "Update an existing rice production",
+                "operationId": "e39203f6206950063b00908dd014c65f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the rice production to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Data to update an existing rice production",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "CodeProvince": {
+                                        "type": "string",
+                                        "example": "32"
+                                    },
+                                    "ProvinceName": {
+                                        "type": "string",
+                                        "example": "Jawa Barat"
+                                    },
+                                    "CodeDistricts": {
+                                        "type": "integer",
+                                        "example": 3201
+                                    },
+                                    "DistrictsName": {
+                                        "type": "string",
+                                        "example": "Sukabumi"
+                                    },
+                                    "TonsIn2020": {
+                                        "type": "integer",
+                                        "example": 0
+                                    },
+                                    "TonsIn2021": {
+                                        "type": "integer",
+                                        "example": 492926.3
+                                    },
+                                    "TonsIn2022": {
+                                        "type": "integer",
+                                        "example": 508220.48
+                                    },
+                                    "TonsIn2023": {
+                                        "type": "integer",
+                                        "example": 515136
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Rice Production updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "CodeProvince": {
+                                            "type": "string"
+                                        },
+                                        "ProvinceName": {
+                                            "type": "string"
+                                        },
+                                        "CodeDistricts": {
+                                            "type": "integer"
+                                        },
+                                        "DistrictsName": {
+                                            "type": "string"
+                                        },
+                                        "TonsIn2020": {
+                                            "type": "integer"
+                                        },
+                                        "TonsIn2021": {
+                                            "type": "integer"
+                                        },
+                                        "TonsIn2022": {
+                                            "type": "integer"
+                                        },
+                                        "TonsIn2023": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found. Rice Production with the given ID not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity. Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized. Authentication required"
                     }
                 }
             },
@@ -2195,19 +2316,6 @@
                     },
                     "TonsIn2023": {
                         "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "ValidationError": {
-                "properties": {
-                    "message": {
-                        "description": "Error message",
-                        "type": "string"
-                    },
-                    "errors": {
-                        "description": "Validation errors",
-                        "type": "object"
                     }
                 },
                 "type": "object"
