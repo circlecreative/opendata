@@ -123,7 +123,7 @@ class PondSaltProductionsController extends Controller
         }
         return new PondSaltProductionsResource($pondSaltProductions);
     }
-
+ 
      /**
      * @OA\Post(
      *     path="/api/Pond Salt Productions",

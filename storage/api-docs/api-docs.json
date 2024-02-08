@@ -746,6 +746,349 @@
                 }
             }
         },
+        "/api/BPS/TotalExpenditurePercapitas": {
+            "get": {
+                "tags": [
+                    "Total Expenditure Percapita"
+                ],
+                "summary": "Get a paginated list of Total Expenditure Percapita.",
+                "operationId": "9296b0466d365d9deeada0e11718e03e",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number for pagination.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Number of items per page.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/TotalExpenditurePercapitas"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Total Expenditure Percapita"
+                ],
+                "summary": "Create a new total expenditure percapita record.",
+                "operationId": "6e6ac1ad0ff79b43ce58d8822f533883",
+                "requestBody": {
+                    "description": "Data to be added",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "CodeProvince": {
+                                        "type": "integer"
+                                    },
+                                    "ProvinceName": {
+                                        "type": "string"
+                                    },
+                                    "TotalExpenditurePercapitas": {
+                                        "type": "integer"
+                                    },
+                                    "Unit": {
+                                        "type": "string"
+                                    },
+                                    "Year": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "example": {
+                                "CodeProvince": "example CodeProvince",
+                                "ProvinceName": "example ProvinceName",
+                                "TotalExpenditurePercapitas": "example TotalExpenditurePercapitas",
+                                "Unit": "Example Unit",
+                                "Year": "Example Year"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data added successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "CodeProvince": {
+                                            "type": "integer",
+                                            "example": 1100
+                                        },
+                                        "ProvinceName": {
+                                            "type": "string",
+                                            "example": "Aceh"
+                                        },
+                                        "TotalExpenditurePercapitas": {
+                                            "type": "integer",
+                                            "example": 7933.73
+                                        },
+                                        "Unit": {
+                                            "type": "string",
+                                            "example": "RIBU RUPIAH"
+                                        },
+                                        "Year": {
+                                            "type": "integer",
+                                            "example": 2010
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "example": {
+                                                "fieldName": [
+                                                    "Error message"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/BPS/TotalExpenditurePercapitas/{id}": {
+            "get": {
+                "tags": [
+                    "Total Expenditure Percapita"
+                ],
+                "summary": "Get a specific total expenditure percapita record by ID.",
+                "description": "Display the specified resource.",
+                "operationId": "39bc57eea2349efdb60c51a7456e351e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the total expenditure percapitas record to be retrieved.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/TotalExpenditurePercapitas"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Not Found. Total Expenditure Percapita with the given ID not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Total Expenditure Percapita"
+                ],
+                "summary": "Update an existing total expenditure percapitas",
+                "operationId": "6c8b6e41eada94998394682d1e9f78ca",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the total exependiture percapita to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Data to update an existing total expenditure percapitas",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "CodeProvince": {
+                                        "type": "integer",
+                                        "example": 1100
+                                    },
+                                    "ProvinceName": {
+                                        "type": "string",
+                                        "example": "Aceh"
+                                    },
+                                    "TotalExpenditurePercapitas": {
+                                        "type": "integer",
+                                        "example": 7933.73
+                                    },
+                                    "Unit": {
+                                        "type": "string",
+                                        "example": "RIBU RUPIAH"
+                                    },
+                                    "Year": {
+                                        "type": "integer",
+                                        "example": 2010
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Total Expenditure Percapitas updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "CodeProvince": {
+                                            "type": "integer"
+                                        },
+                                        "ProvinceName": {
+                                            "type": "string"
+                                        },
+                                        "TotalExpenditurePercapitas": {
+                                            "type": "integer"
+                                        },
+                                        "Unit": {
+                                            "type": "string"
+                                        },
+                                        "Year": {
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found. Total Expenditure Percapitas with the given ID not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity. Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized. Authentication required"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Total Expenditure Percapita"
+                ],
+                "summary": "Delete a Total Expenditure Percapita record by ID.",
+                "operationId": "921a890909f43d78af29dd5ad0739e12",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Total Expenditure Percapitas record to be deleted.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Message": {
+                                            "type": "string",
+                                            "example": "Deleted Successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
         "/api/Kominfo/UmkmGoOnlines": {
             "get": {
                 "tags": [
@@ -2287,6 +2630,416 @@
                     }
                 }
             }
+        },
+        "/api/OpenDataJabar/TotalOfEntrepreneurs": {
+            "get": {
+                "tags": [
+                    "Total Of Entrepreneurs"
+                ],
+                "summary": "Get a paginated list of Total Of Entrepreneurs.",
+                "operationId": "6a29418cd93d02e0e07e5a30c4b3d986",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number for pagination.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Number of items per page.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/TotalOfEntrepreneurs"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/TotalOfEntrepreneurs/{id}": {
+            "get": {
+                "tags": [
+                    "Total Of Entrepreneurs"
+                ],
+                "summary": "Get details of an total of entrepreneurs",
+                "operationId": "aed6cd73c70c455ca3de1d78dc2d6d48",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Total Of Entrepreneurs to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "CodeProvinces": {
+                                            "type": "string",
+                                            "example": "32"
+                                        },
+                                        "ProvincesName": {
+                                            "type": "string",
+                                            "example": "Jawa Barat"
+                                        },
+                                        "CodeRegencyCity": {
+                                            "type": "integer",
+                                            "example": 3274
+                                        },
+                                        "RegencyNameCity": {
+                                            "type": "string",
+                                            "example": "Kota Cirebon"
+                                        },
+                                        "TypeOfBusiness": {
+                                            "type": "string",
+                                            "example": "PENGUSAHA KECIL"
+                                        },
+                                        "TotalEntrepreneurs": {
+                                            "type": "integer",
+                                            "example": 593
+                                        },
+                                        "Entity": {
+                                            "type": "string",
+                                            "example": "UNIT"
+                                        },
+                                        "Year": {
+                                            "type": "string",
+                                            "example": "Year"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Not Found. Total Of Entrepreneurs with the given ID not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Total Of Entrepreneurs"
+                ],
+                "summary": "Delete an Total Of Entrepreneurs",
+                "operationId": "20b9f72900249be9e1a0955fef0f5ad1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Total Of Entrepreneurs to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Total Of Entrepreneurs deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deleted Successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Not Found. Total Of Entrepreneurs with the given ID not found"
+                    }
+                }
+            }
+        },
+        "/api/TotalOfEntrepreneurs": {
+            "post": {
+                "tags": [
+                    "Total Of Entrepreneurs"
+                ],
+                "summary": "Create a new total of entrepreneurs",
+                "operationId": "32ea16c2167f3d2fcb30400f66e34fc6",
+                "requestBody": {
+                    "description": "Data to create a new Total of Entrepreneurs",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "CodeProvinces": {
+                                        "type": "string"
+                                    },
+                                    "ProvincesName": {
+                                        "type": "string"
+                                    },
+                                    "CodeRegencyCity": {
+                                        "type": "integer"
+                                    },
+                                    "RegencyNameCity": {
+                                        "type": "string"
+                                    },
+                                    "TypeOfBusiness": {
+                                        "type": "string"
+                                    },
+                                    "TotalEntrepreneurs": {
+                                        "type": "integer"
+                                    },
+                                    "Entity": {
+                                        "type": "string"
+                                    },
+                                    "Year": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "example": {
+                                "CodeProvinces": "example CodeProvinces",
+                                "ProvincesName": "example ProvincesName",
+                                "CodeRegencyCity": "example CodeRegencyCity",
+                                "RegencyNameCity": "example RegencyNameCity",
+                                "TypeOfBusiness": "example TypeOfBusiness",
+                                "TotalEntrepreneurs": "example TotalEntrepreneurs",
+                                "Entity": "example Entity",
+                                "Year": "example Year"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "PondSaltProductions created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "CodeProvinces": {
+                                            "type": "string",
+                                            "example": "32"
+                                        },
+                                        "ProvincesName": {
+                                            "type": "string",
+                                            "example": "Jawa Barat"
+                                        },
+                                        "CodeRegencyCity": {
+                                            "type": "integer",
+                                            "example": "3274"
+                                        },
+                                        "RegencyNameCity": {
+                                            "type": "string",
+                                            "example": "Kota Cirebon"
+                                        },
+                                        "TypeOfBusiness": {
+                                            "type": "string",
+                                            "example": "PENGUSAHA KECIL"
+                                        },
+                                        "TotalEntrepreneurs": {
+                                            "type": "string",
+                                            "example": "593"
+                                        },
+                                        "Entity": {
+                                            "type": "string",
+                                            "example": "UNIT"
+                                        },
+                                        "Year": {
+                                            "type": "string",
+                                            "example": "2020"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity. Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/totalofentrepreneurs/{id}": {
+            "put": {
+                "tags": [
+                    "Total Of Entrepreneurs"
+                ],
+                "summary": "Update an existing totalofentrepreneurs",
+                "operationId": "ee355c226b3ef1d29ae927a67a2f55a5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the total of entrepreneurs to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Data to update an existing total of entrepreneurs",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "CodeProvinces": {
+                                        "type": "string",
+                                        "example": "32"
+                                    },
+                                    "ProvincesName": {
+                                        "type": "string",
+                                        "example": "Jawa Barat"
+                                    },
+                                    "CodeRegencyCity": {
+                                        "type": "integer",
+                                        "example": 3274
+                                    },
+                                    "RegencyNameCity": {
+                                        "type": "string",
+                                        "example": "Kota Cirebon"
+                                    },
+                                    "TypeOfBusiness": {
+                                        "type": "string",
+                                        "example": "PENGUSAHA KECIL"
+                                    },
+                                    "TotalEntrepreneurs": {
+                                        "type": "integer",
+                                        "example": 593
+                                    },
+                                    "Entity": {
+                                        "type": "string",
+                                        "example": "UNIT"
+                                    },
+                                    "Year": {
+                                        "type": "string",
+                                        "example": "Year"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "total of entrepreneurs updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "CodeProvinces": {
+                                            "type": "string"
+                                        },
+                                        "ProvincesName": {
+                                            "type": "string"
+                                        },
+                                        "CodeRegencyCity": {
+                                            "type": "integer"
+                                        },
+                                        "RegencyNameCity": {
+                                            "type": "string"
+                                        },
+                                        "TypeOfBusiness": {
+                                            "type": "string"
+                                        },
+                                        "TotalEntrepreneurs": {
+                                            "type": "integer"
+                                        },
+                                        "Entity": {
+                                            "type": "string"
+                                        },
+                                        "Year": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found. total of entrepreneurs with the given ID not found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity. Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized. Authentication required"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -2315,6 +3068,26 @@
                         "type": "integer"
                     },
                     "TonsIn2023": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "TotalExpenditurePercapitas": {
+                "properties": {
+                    "CodeProvince": {
+                        "type": "integer"
+                    },
+                    "ProvinceName": {
+                        "type": "string"
+                    },
+                    "TotalExpenditurePercapitas": {
+                        "type": "integer"
+                    },
+                    "Unit": {
+                        "type": "string"
+                    },
+                    "Year": {
                         "type": "integer"
                     }
                 },
@@ -2414,6 +3187,36 @@
                         "type": "string"
                     },
                     "updated_at": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "TotalOfEntrepreneurs": {
+                "title": "Total Of Entrepreneurs",
+                "properties": {
+                    "CodeProvinces": {
+                        "type": "string"
+                    },
+                    "ProvincesName": {
+                        "type": "string"
+                    },
+                    "CodeRegencyCity": {
+                        "type": "integer"
+                    },
+                    "RegencyNameCity": {
+                        "type": "string"
+                    },
+                    "TypeOfBusiness": {
+                        "type": "string"
+                    },
+                    "TotalEntrepreneurs": {
+                        "type": "integer"
+                    },
+                    "Entity": {
+                        "type": "string"
+                    },
+                    "Year": {
                         "type": "string"
                     }
                 },
