@@ -7,6 +7,7 @@
 5. Run `php artisan key:generate`
 6. Run `php artisan migrate`
 7. Run `php artisan db:seed`
-8. Run `php artisan serve`
-9. Open your favorite REST API Client such as [POSTMAN](https://www.postman.com/downloads/) or [Insomnia](https://insomnia.rest/download/)
-10. Import POSTMAN Collection into your POSTMAN App.
+8. Run `php artisan l5-swagger:generate`
+9. Run `php artisan serve`
+10. Open your favorite REST API Client such as [POSTMAN](https://www.postman.com/downloads/) or [Insomnia](https://insomnia.rest/download/)
+11. Import POSTMAN Collection into your POSTMAN App.
