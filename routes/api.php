@@ -3,7 +3,6 @@
 
 use App\Http\Resources\BPS\RiceProductionByDistrictsResource;
 use App\Http\Resources\BPS\InflationRatesResource;
-use App\Http\Resources\BPS\TotalExpenditurePercapitasResource;
 use App\Http\Resources\Kominfo\UmkmGoOnlinesResource;
 use App\Http\Resources\OpenDataJabar\MangoProductionsResource;
 use App\Http\Resources\OpenDataJabar\ConsumsionTaxsResource;

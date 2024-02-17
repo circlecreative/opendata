@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\BPS\TotalExpenditurePercapitasRequest;
 use App\Http\Resources\BPS\TotalExpenditurePercapitasResource;
 use App\Models\BPS\TotalExpenditurePercapitas;
-use App\Http\Controllers\BPS\InflationRatesController;
-use App\Models\OpenDataJabar\TotalOfEntrepreneurs;
 use Database\Seeders\BPS\TotalExpenditurePercapitasSeeder;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Validator;
@@ -140,7 +138,7 @@ class TotalExpenditurePercapitasController extends Controller
 
     public function store(TotalExpenditurePercapitasRequest $request)
     {
-        return (new TotalExpenditurePercapitasResource(TotalOfEntrepreneurs::create($request->validated())))->response()->header('Message', 'Data Added Successfully');
+        return (new TotalExpenditurePercapitasResource(TotalExpenditurePercapitas::create($request->validated())))->response()->header('Message', 'Data Added Successfully');
     }
     /**
      *
